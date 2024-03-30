@@ -1,14 +1,19 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {"storage-account-name": {
+       "type": "string",
+       "metadata": {
+            "description": "Input storage account name"
+        }
+    }},
     "variables": {},
     "resources": [{
-        "name": "armstorageacct24",
+        "name": "[parameters('storage-account-name')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2023-01-01",
         "tags": {
-            "displayName": "armstorageacct24"
+            "displayName": "[parameters('storage-account-name')]"
         },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
